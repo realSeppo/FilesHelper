@@ -2,4 +2,4 @@ File Helper is a simple library that helps you work with files both inside and o
 
 The ResourceFile class simplifies working with files within a project.
 
-A SimpleFile class is a class that helps you work with files outside of your project.
+The SimpleFile class is a class that helps you work with files outside of your project.
