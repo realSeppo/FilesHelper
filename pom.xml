@@ -7,21 +7,22 @@
     <groupId>org.Seppo</groupId>
     <artifactId>FilesHelper</artifactId>
     <version>1.0</version>
+    <packaging>jar</packaging>  <!-- Укажите упаковку, если она не jar -->
 
     <name>FilesHelper</name>
-    <packaging>jar</packaging> <!-- Add packaging type -->
 
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version> <!-- Use a specific version -->
+                <version>3.8.1</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -29,5 +30,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
