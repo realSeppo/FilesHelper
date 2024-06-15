@@ -7,7 +7,7 @@
     <groupId>org.Seppo</groupId>
     <artifactId>FilesHelper</artifactId>
     <version>1.0</version>
-    <packaging>jar</packaging>  <!-- Укажите упаковку, если она не jar -->
+    <packaging>jar</packaging>
 
     <name>FilesHelper</name>
 
@@ -28,6 +28,28 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.4</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
     </build>
 </project>
