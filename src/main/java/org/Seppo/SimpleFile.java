@@ -12,6 +12,7 @@ public class SimpleFile extends File {
     public SimpleFile(String path, byte[] content, boolean rewrite) {
         super(path);
         if(!rewrite && exists()) return;
+        System.out.println(!rewrite + " " + exists());
         try {
             createNewFile();
             Files.write(Path.of(path), content);
