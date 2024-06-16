@@ -1,4 +1,4 @@
-package org.Seppo;
+package com.github.realSeppo;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
