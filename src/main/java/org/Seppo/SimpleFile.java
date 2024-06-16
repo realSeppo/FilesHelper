@@ -9,14 +9,16 @@ public class SimpleFile extends File {
     public SimpleFile(String path) {
         super(path);
     }
-    public SimpleFile(String path, byte[] content) {
+    public SimpleFile(String path, byte[] content, boolean rewrite) {
         super(path);
+        if(!rewrite) return;
         try {
             Files.write(Path.of(path), content);
         } catch (IOException e) {throw new RuntimeException(e);}
     }
-    public SimpleFile(String path, String content) {
+    public SimpleFile(String path, String content, boolean rewrite) {
         super(path);
+        if(!rewrite) return;
         try {
             new FileWriter(this).write(content);
         } catch (IOException e) {throw new RuntimeException(e);}
