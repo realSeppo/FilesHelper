@@ -11,7 +11,7 @@ public class SimpleFile extends File {
     }
     public SimpleFile(String path, byte[] content, boolean rewrite) {
         super(path);
-        if(!rewrite) return;
+        if(!rewrite && exists()) return;
         try {
             createNewFile();
             Files.write(Path.of(path), content);
@@ -19,7 +19,7 @@ public class SimpleFile extends File {
     }
     public SimpleFile(String path, String content, boolean rewrite) {
         super(path);
-        if(!rewrite) return;
+        if(!rewrite && exists()) return;
         try {
             createNewFile();
             new FileWriter(this).write(content);
