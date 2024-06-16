@@ -13,6 +13,7 @@ public class SimpleFile extends File {
         super(path);
         if(!rewrite) return;
         try {
+            createNewFile();
             Files.write(Path.of(path), content);
         } catch (IOException e) {throw new RuntimeException(e);}
     }
@@ -20,6 +21,7 @@ public class SimpleFile extends File {
         super(path);
         if(!rewrite) return;
         try {
+            createNewFile();
             new FileWriter(this).write(content);
         } catch (IOException e) {throw new RuntimeException(e);}
     }
