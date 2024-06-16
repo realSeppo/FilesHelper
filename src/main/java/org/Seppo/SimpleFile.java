@@ -1,4 +1,4 @@
-package com.github.realSeppo;
+package org.Seppo;
 
 import java.io.*;
 import java.nio.charset.Charset;
