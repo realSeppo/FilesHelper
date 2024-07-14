@@ -11,14 +11,14 @@ public class SimpleFile extends File {
     }
     public SimpleFile(String path, byte[] content, boolean rewrite) {
         super(path);
-        if(!rewrite && exists()) return;
+        if(!rewrite && getAbsoluteFile().exists()) return;
         try {
             Files.write(Path.of(path), content);
         } catch (IOException e) {throw new RuntimeException(e);}
     }
     public SimpleFile(String path, String content, boolean rewrite) {
         super(path);
-        if(!rewrite && exists()) return;
+        if(!rewrite && getAbsoluteFile().exists()) return;
         try {
             new FileWriter(this).write(content);
         } catch (IOException e) {throw new RuntimeException(e);}
