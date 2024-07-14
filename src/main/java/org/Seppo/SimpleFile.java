@@ -12,7 +12,7 @@ public class SimpleFile extends File {
     public SimpleFile(String path, byte[] content, boolean rewrite) {
         super(path);
         try {
-            if(!rewrite && !createNewFile()) return;
+            if(!rewrite && exists()) return;
             Files.write(Path.of(path), content);
         } catch (IOException e) {throw new RuntimeException(e);}
     }
