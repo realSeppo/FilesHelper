@@ -11,18 +11,29 @@ public class SimpleFile extends File {
     }
     public SimpleFile(String path, byte[] content, boolean rewrite) {
         super(path);
-        new SimpleFile("test.txt", getAbsoluteFile().getPath().getBytes(), false);
-        if(!rewrite && getAbsoluteFile().exists()) return;
-        try {
-            Files.write(Path.of(path), content);
-        } catch (IOException e) {throw new RuntimeException(e);}
     }
     public SimpleFile(String path, String content, boolean rewrite) {
         super(path);
-        if(!rewrite && getAbsoluteFile().exists()) return;
-        try {
-            new FileWriter(this).write(content);
-        } catch (IOException e) {throw new RuntimeException(e);}
+    }
+    public SimpleFile create(byte[] content, boolean rewrite){
+        if(!(!rewrite && getAbsoluteFile().exists())) {
+            try {
+                Files.write(Path.of(getPath()), content);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return this;
+    }
+    public SimpleFile create(String content, boolean rewrite){
+        if(!(!rewrite && getAbsoluteFile().exists())) {
+            try {
+                new FileWriter(this).write(content);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return this;
     }
     public byte[] readBytes() throws IOException {
         return Files.readAllBytes(Path.of(getPath()));
