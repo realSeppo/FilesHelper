@@ -9,12 +9,6 @@ public class SimpleFile extends File {
     public SimpleFile(String path) {
         super(path);
     }
-    public SimpleFile(String path, byte[] content, boolean rewrite) {
-        super(path);
-    }
-    public SimpleFile(String path, String content, boolean rewrite) {
-        super(path);
-    }
     public SimpleFile create(byte[] content, boolean rewrite){
         if(!(!rewrite && getAbsoluteFile().exists())) {
             try {
