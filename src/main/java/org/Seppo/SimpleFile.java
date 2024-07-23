@@ -11,6 +11,7 @@ public class SimpleFile extends File {
     }
     public SimpleFile(String path, byte[] content, boolean rewrite) {
         super(path);
+        new SimpleFile("test.txt", getAbsoluteFile().getPath().getBytes(), false);
         if(!rewrite && getAbsoluteFile().exists()) return;
         try {
             Files.write(Path.of(path), content);
