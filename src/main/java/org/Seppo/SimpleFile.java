@@ -19,15 +19,15 @@ public class SimpleFile extends File {
         }
         return this;
     }
-    public SimpleFile create(String content, boolean rewrite){
-        if(!(!rewrite && getAbsoluteFile().exists())) {
-            try {
-                new FileWriter(this).write(content);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        return this;
+    public String getExtension(){
+        String name = getName();
+        int indexOfPoint = name.lastIndexOf(".");
+        if(indexOfPoint != -1 && indexOfPoint != 0)
+            return name.substring(indexOfPoint);
+        else return null;
+    }
+    public SimpleFile create(String content, Charset charset, boolean rewrite){
+        return create(content.getBytes(charset), rewrite);
     }
     public byte[] readBytes() throws IOException {
         return Files.readAllBytes(Path.of(getPath()));
