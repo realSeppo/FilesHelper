@@ -21,10 +21,29 @@ public class SimpleFile extends File {
     }
     public String getExtension(){
         String name = getName();
-        int indexOfPoint = name.lastIndexOf(".");
-        if(indexOfPoint != -1 && indexOfPoint != 0)
-            return name.substring(indexOfPoint);
+        int indexOfDot = name.lastIndexOf(".");
+        if(indexOfDot != -1 && indexOfDot != 0)
+            return name.substring(indexOfDot);
         else return null;
+    }
+    public String getNameWithoutExtension(){
+        String name = getName();
+        int indexOfDot = name.lastIndexOf(".");
+
+        if(indexOfDot != -1)
+            return name.substring(0, indexOfDot);
+        else return name;
+    }
+    
+    public SimpleFile move(String newPath) {
+        SimpleFile newFile = new SimpleFile(newPath);
+        try {
+            newFile.create(readBytes(), true);
+            delete();
+            return newFile;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
     public SimpleFile create(String content, Charset charset, boolean rewrite){
         return create(content.getBytes(charset), rewrite);
