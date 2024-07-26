@@ -10,4 +10,13 @@ public class Folder extends File{
             mkdir();
         }
     }
+
+    public SimpleFile[] listSimpleFiles(){
+        File[] files = listFiles();
+        SimpleFile[] simpleFiles = new SimpleFile[files.length];
+        for(int i = 0; i < files.length; i++) {
+            simpleFiles[i] = new SimpleFile(files[i].getPath());
+        }
+        return simpleFiles;
+    }
 }

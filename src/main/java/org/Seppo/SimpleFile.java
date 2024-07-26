@@ -34,7 +34,7 @@ public class SimpleFile extends File {
             return name.substring(0, indexOfDot);
         else return name;
     }
-    
+
     public SimpleFile move(String newPath) {
         SimpleFile newFile = new SimpleFile(newPath);
         try {
@@ -44,6 +44,9 @@ public class SimpleFile extends File {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+    public Folder toFolder(){
+        return new Folder(getPath());
     }
     public SimpleFile create(String content, Charset charset, boolean rewrite){
         return create(content.getBytes(charset), rewrite);
