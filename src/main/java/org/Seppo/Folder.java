@@ -19,7 +19,7 @@ public class Folder extends File{
         }
         return simpleFiles;
     }
-    public File getFile(String name){
-        return new File(getPath() + "/" + name);
+    public SimpleFile getFile(String name) {
+        return new SimpleFile(getPath() + "/" + name);
     }
 }
